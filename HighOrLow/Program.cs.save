@@ -3,16 +3,7 @@ class Program
 	static void Main ( string[] args )
 	{
 		Console.WriteLine( "High/ Low Running" );
-
-		//create an instance of the Game class
-		Game newGame = new Game();
-		int roundCount = newGame.PlayGame();
-
-		
-
-
-
-/*
+	
 	// Computer Should choose random number
 	// User should be able to submit a guess
 	// if guess is too high then computer informs user
@@ -57,9 +48,7 @@ class Program
 		}
 	
 	} while ( guessNumber != targetNumber );
-*/
 	Console.WriteLine( "Thanks for playing!" );
 	Console.WriteLine( " You took {0} rounds to guess the answer!", roundCount );
-
 	}
 }
