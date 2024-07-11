@@ -99,7 +99,7 @@ public class Program
 
 		else
 		{
-			Concole.WriteLine( "runChoice is undefined/null" );
+			Console.WriteLine( "runChoice is undefined/null" );
 		}
 		
 		//Comparison operators ==, >, < , >=, <=, != (the ! - not - operator is very versatile!)
