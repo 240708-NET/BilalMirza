@@ -14,4 +14,6 @@
 - The user can select the shift value (key) used for encryption.
 - The app outputs the decrypted message.
 
-## Exit
+## Exit Program
+- The user can restart program.
+- The user can exit program.
