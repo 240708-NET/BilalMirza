@@ -3,7 +3,8 @@ class CaesarCipher()
 
 
 //Fields
-	char [] alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e',  'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray(); // chat gpt taught me this neat little
+
 
 
  	public string encryptor(string cipher_direction, string start_text, int shift_amount)
@@ -19,9 +20,16 @@ class CaesarCipher()
 
 		foreach (char c in start_text)
 		{
-			position = Array.IndexOf(alphabet, c);
-			new_position = position + shift_amount;
-			end_text += alphabet[new_position];
+			if (c == ' ')
+			{
+				end_text += c;
+			}
+			else
+			{
+				position = Array.IndexOf(alphabet, c);
+				new_position = position + shift_amount;
+				end_text += alphabet[new_position];
+			}
 		}
 		return end_text;
 	}
@@ -31,7 +39,7 @@ class CaesarCipher()
 	public string inputValidator (string type, string prompt)
 	{
 		Console.WriteLine (prompt);
-		string input = Console.ReadLine ();
+		string input = Console.ReadLine();
 
 		if (type == "char")
 			while (!input.All(char.IsLetter) || String.IsNullOrEmpty(input))

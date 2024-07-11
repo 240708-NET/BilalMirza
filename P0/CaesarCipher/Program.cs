@@ -21,12 +21,12 @@
 
             string end_text = Cipher.encryptor(direction, message, shiftNum);
 
-            Console.WriteLine($"\nHere's the {direction}d result: {end_text}");
+            Console.WriteLine($"\n -- Here's the {direction}d result: {end_text} --");
 
             //Prompts user to decide wether they would like to restart or exit program
             run_program = Cipher.restartProgram();
 
         }
-        Console.WriteLine( "\nGoodBye!" );
+        Console.WriteLine( "\nGoodBye!\n" );
 	}
 }
