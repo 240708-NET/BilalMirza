@@ -3,33 +3,27 @@ class CaesarCipher()
 
 
 //Fields
-	char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray(); // chat gpt taught me this neat little
+	char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
 
-
- 	public string encryptor(string cipher_direction, string start_text, int shift_amount)
+	// Handles encryption of user input.
+ 	public string encryptor(string cipher_direction, string start_text, string shift_amount)
  	{
 		string end_text = "";
 		int position;
 		int new_position;
+		int shiftNum = Int32.Parse(shift_amount) % alphabet.Length; //Mod 26 to keep value in the bounds of the 'alphabet' array
 
 		if (cipher_direction == "decode")
-			{
-				shift_amount *= -1;
-			}
+		{
+			shiftNum *= -1;
+		}
 
 		foreach (char c in start_text)
 		{
-			if (c == ' ')
-			{
-				end_text += c;
-			}
-			else
-			{
-				position = Array.IndexOf(alphabet, c);
-				new_position = position + shift_amount;
-				end_text += alphabet[new_position];
-			}
+			position = Array.IndexOf(alphabet, c);
+			new_position = position + shiftNum;
+			end_text += alphabet[new_position];
 		}
 		return end_text;
 	}
@@ -60,7 +54,7 @@ class CaesarCipher()
 		return input;
 	}
 
-	//Prompts user to decide wether they would like to restart program or quit.
+	//Prompts user to decide wether to restart program or quit; Returns a boolean to signify continuation/ending of program.
 	public bool restartProgram ()
 	{
 		string choice = "";
@@ -80,6 +74,4 @@ class CaesarCipher()
 			return true;
 		}
 	}
-
-
 }

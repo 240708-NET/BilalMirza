@@ -10,16 +10,21 @@
         Console.Write ($"{CaesarUI.description}");
 
         bool run_program = true;
+        string direction;
 
         //Run program until user quits
         while (run_program)
         {
-            string direction = Cipher.inputValidator("char", "\nType 'encode' to encrypt, type 'decode' to decrypt: ");
+            do
+            {
+                direction = Cipher.inputValidator("char", "\nType 'encode' to encrypt, type 'decode' to decrypt: ");
+            }
+            while (direction != "encode" && direction != "decode");
+            
 	        string message = Cipher.inputValidator("char", "\nType your message: ");
 	        string shift = Cipher.inputValidator("num", "\nType the shift number: ");
-            int shiftNum = Int32.Parse(shift) % 26;
 
-            string end_text = Cipher.encryptor(direction, message, shiftNum);
+            string end_text = Cipher.encryptor(direction, message, shift);
 
             Console.WriteLine($"\n -- Here's the {direction}d result: {end_text} --");
 
