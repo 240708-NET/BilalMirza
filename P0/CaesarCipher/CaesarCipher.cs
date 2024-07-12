@@ -18,17 +18,25 @@ char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharA
 			shiftNum *= -1;
 		}
 
-		foreach (char c in start_text)
+		foreach (char c in start_text.ToLower()) //To.Lower to handle uppercase input
 		{
 			position = Array.IndexOf(alphabet, c);
-			new_position = position + shiftNum;
 
-			if (new_position < 0) //Handles wrapping backwards during decoding (test: 'decode' "abc")
+			if (position != -1)
             {
-                new_position += 26; //alphabet length
-            }
+				new_position = position + shiftNum;
 
-			end_text += alphabet[new_position];
+				if (new_position < 0) //Handles wrapping backwards during decoding (test: 'decode' "abc")
+				{
+					new_position += 26; //alphabet length
+				}
+
+				end_text += alphabet[new_position];
+			}
+			else
+			{
+				end_text += c; // Preserve spaces and other non-letter characters
+			}
 		}
 		return end_text;
 	}
