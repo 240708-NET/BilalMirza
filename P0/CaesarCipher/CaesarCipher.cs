@@ -3,8 +3,7 @@ class CaesarCipher()
 
 
 //Fields
-	char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-
+char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray(); //double alphabet to handle forwards wrapping through alphatebt (test: 'encode' "xyz")
 
 	// Handles encryption of user input.
  	public string encryptor(string cipher_direction, string start_text, string shift_amount)
@@ -12,7 +11,7 @@ class CaesarCipher()
 		string end_text = "";
 		int position;
 		int new_position;
-		int shiftNum = Int32.Parse(shift_amount) % alphabet.Length; //Mod 26 to keep value in the bounds of the 'alphabet' array
+		int shiftNum = Int32.Parse(shift_amount) % 26; //Mod 26 to keep value in the bounds of the 'alphabet' array
 
 		if (cipher_direction == "decode")
 		{
@@ -23,6 +22,12 @@ class CaesarCipher()
 		{
 			position = Array.IndexOf(alphabet, c);
 			new_position = position + shiftNum;
+
+			if (new_position < 0) //Handles wrapping backwards during decoding (test: 'decode' "abc")
+            {
+                new_position += 26; //alphabet length
+            }
+
 			end_text += alphabet[new_position];
 		}
 		return end_text;
