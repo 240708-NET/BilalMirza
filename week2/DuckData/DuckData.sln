@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileIO", "FileIo\FileIO.csproj", "{B11B4936-012E-473E-80C5-639F3E245C95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duckdata.Repo", "DuckData.Repo\Duckdata.Repo.csproj", "{D651C4F7-5039-415D-9CD4-62970C611E54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckData.Models", "DuckData.Models\DuckData.Models.csproj", "{9D32E33B-4F54-4D6E-8CF5-C5AD9E513BC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B11B4936-012E-473E-80C5-639F3E245C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11B4936-012E-473E-80C5-639F3E245C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11B4936-012E-473E-80C5-639F3E245C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11B4936-012E-473E-80C5-639F3E245C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D651C4F7-5039-415D-9CD4-62970C611E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D651C4F7-5039-415D-9CD4-62970C611E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D651C4F7-5039-415D-9CD4-62970C611E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D651C4F7-5039-415D-9CD4-62970C611E54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D32E33B-4F54-4D6E-8CF5-C5AD9E513BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D32E33B-4F54-4D6E-8CF5-C5AD9E513BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D32E33B-4F54-4D6E-8CF5-C5AD9E513BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D32E33B-4F54-4D6E-8CF5-C5AD9E513BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
