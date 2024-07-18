@@ -125,3 +125,104 @@ SELECT Track.Name AS 'Track', Artist.name AS 'Artist', Genre.Name AS 'Genre'
         INNER JOIN [MyDatabase].[dbo].[Artist] AS Artist
             ON Album.ArtistId = Artist.ArtistID
     WHERE Genre.Name = 'Rock';
+
+-- ************** DDL (Data Definition Language) **************
+
+-- CREATE DATABASE: Used to initialize items in the server
+-- ALTER TABLE
+
+CREATE DATABASE DemoDB;
+
+USE DemoDB;
+
+CREATE TABLE DemoTable(
+    demo_id int IDENTITY(1,1) PRIMARY KEY,
+    demo_name VARCHAR(255) NOT NULL,
+    demo_date TIMESTAMP
+)
+
+-- Add a new column
+ALTER TABLE DemoTable
+    ADD demo_description VARCHAR (255) NOT NULL;
+
+-- Alter  column name (using procedures)
+EXEC sp_rename 'dbo.DemoTable.demo_description', 'demo_column_name', 'COLUMN';
+
+-- ************** DML (Data Manipulation Language) **************
+-- UPDATE
+-- SET
+-- DELETE
+-- TRUNCATE
+
+-- Insert Values
+INSERT INTO DemoTable(demo_name, demo_date, demo_column_name) 
+    VALUES ('my Value', GETDATE(), 'testing');
+
+Select * FROM DemoTable;
+
+-- Update Values
+UPDATE DemoTable
+    SET demo_column_name = 'My new value!'
+    WHERE demo_id = 1;
+
+-- Delete
+DELETE FROM DemoTable WHERE demo_id = 2;
+
+-- Truncate
+TRUNCATE TABLE DemoTable;
+
+--Delete/ Drop Table
+
+
+-- Sequence demo (Bilal, Nick, Omar)
+
+Select * FROM DemoTable1;
+Select * FROM DemoTable2;
+
+-- Step 1: Create 2 separate tables
+CREATE TABLE DemoTable1(
+    demo_id int PRIMARY KEY
+)
+CREATE TABLE DemoTable2(
+    demo_id int PRIMARY KEY
+)
+
+-- Step 2: Create sequence
+CREATE SEQUENCE demo_sequence_name  
+    AS TINYINT 
+    START WITH 0 -- Optional: minvalue is assumed as starting value
+    INCREMENT BY 1  -- Optional - default value is 1, cannot be 0, -value = decending
+    MINVALUE 0
+    MAXVALUE 225
+    NO CYCLE
+    NO CACHE;
+
+SELECT NEXT VALUE FOR demo_sequence_name;
+
+
+
+
+/* Notes:
+
+** SYNTAX: **
+CREATE SEQUENCE [schema_name . ] sequence_name  
+    [ AS [ built_in_integer_type | user-defined_integer_type ] ]  
+    [ START WITH <constant> ]  
+    [ INCREMENT BY <constant> ]  
+    [ { MINVALUE [ <constant> ] } | { NO MINVALUE } ]  
+    [ { MAXVALUE [ <constant> ] } | { NO MAXVALUE } ]  
+    [ CYCLE | { NO CYCLE } ]  
+    [ { CACHE [ <constant> ] } | { NO CACHE } ]  
+    [ ; ]  
+
+A sequence can be defined as any integer type. The following types are allowed.
+
+tinyint - Range 0 to 255
+smallint - Range -32,768 to 32,767
+int - Range -2,147,483,648 to 2,147,483,647
+bigint - Range -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+decimal and numeric with a scale of 0.
+Any user-defined data type (alias type) that is based on one of the allowed types.
+*/
+
+
