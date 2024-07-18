@@ -28,6 +28,7 @@ class CaesarCipher()
 				{
 					new_position += 26; //alphabet length
 				}
+
 				end_text += alphabet[new_position];
 			}
 			else

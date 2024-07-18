@@ -1,11 +1,13 @@
 class CaesarCipher()
 {
+	//Fields
+	char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray(); //double alphabet to handle forwards wrapping through alphatebt (test: 'encode' "xyz")
 
+	// encryptor: Handles encryption logic
+	// Direction - dictates wether user would like to encode or decode a message
+	// Message - Message user would like to encode
+	// Shift - the amount a user would like to shift each character in a message.
 
-//Fields
-char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray(); //double alphabet to handle forwards wrapping through alphatebt (test: 'encode' "xyz")
-
-	// Handles encryption of user input.
  	public string encryptor(string cipher_direction, string start_text, string shift_amount)
  	{
 		string end_text = "";
@@ -38,36 +40,10 @@ char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharA
 				end_text += c; // Preserve spaces and other non-letter characters
 			}
 		}
-		return end_text;
+		return Console.WriteLine($"\n -- Here's the {direction}d result: {end_text} --");
 	}
 
-	//Checks user input to ensure that: something is entered; intended input type is entered.
-	//Requirements: Please specify wether you are checking for "num" (numbers) or "char" characters
-	public string inputValidator (string type, string prompt)
-	{
-		Console.WriteLine (prompt);
-		string input = Console.ReadLine();
-
-		if (type == "char")
-			while (!input.All(char.IsLetter) || String.IsNullOrEmpty(input))
-			{
-				Console.WriteLine("\nInvalid input, please try again. [only characters are accepted]");
-				Console.WriteLine (prompt);
-				input = Console.ReadLine ();
-			}
-		else if (type == "num")
-		{
-			while (!input.All(char.IsDigit) || String.IsNullOrEmpty(input))
-			{
-			Console.WriteLine("\nInvalid input, please try again. [only numbers are accepted]");
-			Console.WriteLine (prompt);
-			input = Console.ReadLine ();
-			}
-		}
-		return input;
-	}
-
-	//Prompts user to decide wether to restart program or quit; Returns a boolean to signify continuation/ending of program.
+	//Prompts user to decide wether to restart program or quit; Returns a boolean to signify continuation/ ending of program.
 	public bool restartProgram ()
 	{
 		string choice = "";
