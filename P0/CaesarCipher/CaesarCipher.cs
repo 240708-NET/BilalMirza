@@ -1,9 +1,7 @@
 class CaesarCipher()
 {
-
-
-//Fields
-char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray(); //double alphabet to handle forwards wrapping through alphatebt (test: 'encode' "xyz")
+	//Fields
+	char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray(); //double alphabet to handle forwards wrapping through alphatebt (test: 'encode' "xyz")
 
 	// Handles encryption of user input.
  	public string encryptor(string cipher_direction, string start_text, string shift_amount)
@@ -30,7 +28,6 @@ char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharA
 				{
 					new_position += 26; //alphabet length
 				}
-
 				end_text += alphabet[new_position];
 			}
 			else
@@ -41,8 +38,8 @@ char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharA
 		return end_text;
 	}
 
-	//Checks user input to ensure that: something is entered; intended input type is entered.
-	//Requirements: Please specify wether you are checking for "num" (numbers) or "char" characters
+	// Checks user input to ensure that: Something is entered; intended input type is entered.
+	// Requirements: Please specify wether you are checking for "num" (numbers) or "char" characters
 	public string inputValidator (string type, string prompt)
 	{
 		Console.WriteLine (prompt);
@@ -59,9 +56,9 @@ char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharA
 		{
 			while (!input.All(char.IsDigit) || String.IsNullOrEmpty(input))
 			{
-			Console.WriteLine("\nInvalid input, please try again. [only numbers are accepted]");
-			Console.WriteLine (prompt);
-			input = Console.ReadLine ();
+				Console.WriteLine("\nInvalid input, please try again. [only numbers are accepted]");
+				Console.WriteLine (prompt);
+				input = Console.ReadLine ();
 			}
 		}
 		return input;

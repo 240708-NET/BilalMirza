@@ -2,11 +2,10 @@
 {
 	static void Main (string[] args )
 	{
-
         CaesarCipher Cipher = new CaesarCipher(); 
 
         //References variables containing logo design and app decription from the 'CaesarUI' class
-		Console.Write ($"{CaesarUI.logo}");
+        Console.Write ($"{CaesarUI.logo}");
         Console.Write ($"{CaesarUI.description}");
 
         bool run_program = true;
