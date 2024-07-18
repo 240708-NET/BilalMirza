@@ -13,7 +13,7 @@ namespace HelloEF
             Console.WriteLine(MyPet.Speak());
 
             // DataContext?
-            string ConnectionString = File.ReadAllText("./connectionstring"); // Connection string should have no spaces
+            //string ConnectionString = File.ReadAllText("./connectionstring"); // Connection string should have no spaces
 
             DbContextOptionsBuilder<DataContext> ContextOptions = new DbContextOptionsBuilder<DataContext>().UseSqlServer(ConnectionString);
 
@@ -25,10 +25,10 @@ namespace HelloEF
     {
         // Fields
         public int Id {get; set;}
-        public string Name {get; set;}
-        public int Cuteness {get; set;}
-        public long Chaos {get; set;}
-        public string Species {get; set;}
+        public string? Name {get; set;}
+        public int? Cuteness {get; set;}
+        public long? Chaos {get; set;}
+        public string? Species {get; set;}
 
         // Constructors
 
@@ -47,10 +47,11 @@ namespace HelloEF
         public DbSet<Pet> Pets => Set<Pet> ();
 
         // Constructors
-        public DataContext (DbContextOptions<DataContext> options) : base(options) {}
+        // public DataContext (DbContextOptions<DataContext> options) : base(options) {}
+
+        string ConnectionString = File.ReadAllText("./connectionstring"); // Connection string should have no spaces
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){}
+
     }
-
-
 }
