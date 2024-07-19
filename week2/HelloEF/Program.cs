@@ -14,10 +14,8 @@ namespace HelloEF
 
             // DataContext?
             //string ConnectionString = File.ReadAllText("./connectionstring"); // Connection string should have no spaces
-
-            DbContextOptionsBuilder<DataContext> ContextOptions = new DbContextOptionsBuilder<DataContext>().UseSqlServer(ConnectionString);
-
-            DataContext Context = new DataContext(ContextOptions.Options);
+            // DbContextOptionsBuilder<DataContext> ContextOptions = new DbContextOptionsBuilder<DataContext>().UseSqlServer(ConnectionString);
+            // DataContext Context = new DataContext(ContextOptions.Options);
         }
     }
 
@@ -51,7 +49,10 @@ namespace HelloEF
 
         string ConnectionString = File.ReadAllText("./connectionstring"); // Connection string should have no spaces
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(ConnectionString);
+        }
 
     }
 }
