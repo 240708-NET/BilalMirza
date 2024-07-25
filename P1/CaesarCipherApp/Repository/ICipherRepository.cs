@@ -6,6 +6,6 @@ namespace Repository
     {
         void AddCipher(Cipher cipher);
         Cipher GetCipher(int id);
-        IEnumerable<Cipher> GetAllCiphers();
+        List<Cipher> GetAllCiphers();
     }
 }

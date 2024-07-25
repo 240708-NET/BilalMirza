@@ -38,37 +38,52 @@ namespace UI
 
             " );
 
+            var message = "";
+            var shift = 0;
+
             while (true)
             {
                 Console.WriteLine("Enter 1 to Encrypt, 2 to Decrypt, 3 to View All Ciphers, 0 to Exit:");
                 var choice = Console.ReadLine();
 
-                if (choice == "0") break;
-
-                Console.WriteLine("Enter your message:");
-                var message = Console.ReadLine();
-
-                Console.WriteLine("Enter your shift:");
-                var shift = int.Parse(Console.ReadLine());
-
-                if (choice == "1")
+                switch (choice)
                 {
-                    var encrypted = cipherService.Encrypt(message, shift);
-                    Console.WriteLine($"Encrypted Message: {encrypted}");
-                    cipherService.SaveCipher(message, shift);
-                }
-                else if (choice == "2")
-                {
-                    var decrypted = cipherService.Decrypt(message, shift);
-                    Console.WriteLine($"Decrypted Message: {decrypted}");
-                }
-                else if (choice == "3")
-                {
-                    var ciphers = cipherService.GetAllCiphers();
-                    foreach (var cipher in ciphers)
-                    {
-                        Console.WriteLine($"ID: {cipher.CipherID}, Message: {cipher.Message}, Shift: {cipher.Shift}, Date Created: {cipher.DateCreated}");
-                    }
+                    case "0":
+                        return;
+                    case "1":
+                        Console.WriteLine("\nEnter your message:");
+                        message = Console.ReadLine();
+
+                        Console.WriteLine("\nEnter your shift:");
+                        shift = int.Parse(Console.ReadLine());
+
+                        var encrypted = cipherService.Encrypt(message, shift);
+                        Console.WriteLine($"--> Encrypted Message: {encrypted} <--");
+                        cipherService.SaveCipher(encrypted, shift);
+                        break;
+                        
+                    case "2":
+                        Console.WriteLine("\nEnter your message:");
+                        message = Console.ReadLine();
+
+                        Console.WriteLine("\nEnter your shift:");
+                        shift = int.Parse(Console.ReadLine());
+
+                        var decrypted = cipherService.Decrypt(message, shift);
+                        Console.WriteLine($"--> Decrypted Message: {decrypted} <--");
+                        break;
+
+                    case "3":
+                        var ciphers = cipherService.GetAllCiphers();
+                        foreach (var cipher in ciphers)
+                        {
+                            Console.WriteLine($"ID: {cipher.CipherID}, Message: {cipher.Message}, Shift: {cipher.Shift}, Date Created: {cipher.DateCreated}");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice. Please enter a valid option.");
+                        break;
                 }
             }
         }

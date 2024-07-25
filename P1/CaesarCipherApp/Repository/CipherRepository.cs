@@ -24,7 +24,7 @@ namespace Repository
             return _context.Ciphers.Find(id);
         }
 
-        public IEnumerable<Cipher> GetAllCiphers()
+        public List<Cipher> GetAllCiphers()
         {
             return _context.Ciphers.ToList();
         }
