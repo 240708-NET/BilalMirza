@@ -26,8 +26,8 @@ namespace Logic
         private string ProcessText(string text, int shift)
         {
             string result = "";
-            char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-            int alphabetLength = alphabet.Length;
+            char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray();
+            int alphabetLength = 26;
 
             foreach (char c in text.ToLower())
             {
@@ -35,7 +35,7 @@ namespace Logic
 
                 if (position != -1)
                 {
-                    int new_position = (position + shift + alphabetLength) % alphabetLength;
+                    int new_position = Math.Abs(position + shift + alphabetLength) % alphabetLength;
                     result += alphabet[new_position];
                 }
                 else
