@@ -1,21 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace Repository
+namespace Repository;
+
+public class CipherContext : DbContext
 {
-    public class CipherContext : DbContext
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connectionString = File.ReadAllText("../connectionString");
-            optionsBuilder.UseSqlServer(connectionString);
-        }
-
-        // public CipherContext(DbContextOptions<CipherContext> options) : base(options)
-        // {
-        // }
-
-        public DbSet<Cipher> Ciphers { get; set; }
+        string connectionString = File.ReadAllText("../connectionString");
+        optionsBuilder.UseSqlServer(connectionString);
     }
+
+    // public CipherContext(DbContextOptions<CipherContext> options) : base(options)
+    // {
+    // }
+
+    public DbSet<Cipher> Ciphers { get; set; }
 }

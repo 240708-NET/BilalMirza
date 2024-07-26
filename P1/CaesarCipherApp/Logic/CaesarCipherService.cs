@@ -45,7 +45,13 @@ public class CaesarCipherService
 
             if (position != -1)
             {
-                int new_position = position + shift + 26;
+                int new_position = position + shift;
+
+                if (new_position < 0) //Handles wrapping backwards during decoding (test: 'decode' "abc")
+				{
+					new_position += alphabetLength; //alphabet length
+				}
+
                 result += alphabet[new_position];
             }
             else
@@ -73,8 +79,13 @@ public class CaesarCipherService
         return _cipherRepository.GetCipher(id);
     }
 
-    public IEnumerable<Cipher> GetAllCiphers()
+    public List<Cipher> GetAllCiphers()
     {
         return _cipherRepository.GetAllCiphers();
+    }
+
+    public void DeleteCipher(int id)
+    {
+        _cipherRepository.DeleteCipher(id);
     }
 }

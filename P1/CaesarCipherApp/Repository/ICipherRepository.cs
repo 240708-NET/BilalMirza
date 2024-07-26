@@ -1,11 +1,10 @@
 using Models;
 
-namespace Repository
+namespace Repository;
+public interface ICipherRepository
 {
-    public interface ICipherRepository
-    {
-        void AddCipher(Cipher cipher);
-        Cipher GetCipher(int id);
-        List<Cipher> GetAllCiphers();
-    }
+    void AddCipher(Cipher cipher);
+    Cipher GetCipher(int id);
+    List<Cipher> GetAllCiphers();
+    void DeleteCipher ( int id );
 }
