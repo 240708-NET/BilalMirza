@@ -2,70 +2,79 @@
 using Models;
 using System;
 
-namespace Logic
+namespace Logic;
+public class CaesarCipherService
 {
-    public class CaesarCipherService
+    private readonly ICipherRepository _cipherRepository;
+
+    public CaesarCipherService(ICipherRepository cipherRepository)
     {
-        private readonly ICipherRepository _cipherRepository;
+        _cipherRepository = cipherRepository;
+    }
 
-        public CaesarCipherService(ICipherRepository cipherRepository)
+    public string Encrypt(string message, int shift)
+    {
+        return ProcessText(message, shift);
+    }
+
+    public string Decrypt(string message, int shift)
+    {
+        return ProcessText(message, -shift);
+    }
+
+    private string ProcessText(string text, int shift)
+    {
+        string result = "";
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray();
+        int alphabetLength = 26;
+
+        foreach (char c in text.ToLower())
         {
-            _cipherRepository = cipherRepository;
-        }
+            int position = Array.IndexOf(alphabet, c);
 
-        public string Encrypt(string message, int shift)
-        {
-            return ProcessText(message, shift);
-        }
-
-        public string Decrypt(string message, int shift)
-        {
-            return ProcessText(message, -shift);
-        }
-
-        private string ProcessText(string text, int shift)
-        {
-            string result = "";
-            char[] alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".ToCharArray();
-            int alphabetLength = 26;
-
-            foreach (char c in text.ToLower())
+            // Executes proper decryption handling
+            if (shift < 0)
             {
-                int position = Array.IndexOf(alphabet, c);
-
-                if (position != -1)
-                {
-                    int new_position = Math.Abs(position + shift + alphabetLength) % alphabetLength;
-                    result += alphabet[new_position];
-                }
-                else
-                {
-                    result += c;
-                }
+                shift = -(Math.Abs(shift) % alphabetLength); // set back to negative after calculations
             }
-            return result;
-        }
-
-        public void SaveCipher(string message, int shift)
-        {
-            var cipher = new Cipher
+            else
             {
-                Message = message,
-                Shift = shift,
-                DateCreated = DateTime.Now
-            };
+                shift = shift % alphabetLength;
+            }
 
-            _cipherRepository.AddCipher(cipher);
+
+            if (position != -1)
+            {
+                int new_position = position + shift + 26;
+                result += alphabet[new_position];
+            }
+            else
+            {
+                result += c;
+            }
         }
+        return result;
+    }
 
-        public Cipher GetCipher(int id)
+    public void SaveCipher(string message, int shift)
+    {
+        var cipher = new Cipher
         {
-            return _cipherRepository.GetCipher(id);
-        }
+            Message = message,
+            Shift = shift,
+            DateCreated = DateTime.Now
+        };
 
-        public IEnumerable<Cipher> GetAllCiphers()
-        {
-            return _cipherRepository.GetAllCiphers();
-        }
+        _cipherRepository.AddCipher(cipher);
+    }
+
+    public Cipher GetCipher(int id)
+    {
+        return _cipherRepository.GetCipher(id);
+    }
+
+    public IEnumerable<Cipher> GetAllCiphers()
+    {
+        return _cipherRepository.GetAllCiphers();
     }
 }
