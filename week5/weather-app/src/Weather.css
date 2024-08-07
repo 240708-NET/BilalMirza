@@ -1,0 +1,61 @@
+/* Weather.css */
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.weather-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.weather-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.weather-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.weather-form button:hover {
+  background-color: #0056b3;
+}
+
+.weather-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-data h2 {
+  margin: 0 auto 20px auto; /* Add bottom margin for spacing */
+  color: #333;
+}
+
+.weather-data p {
+  margin: 5px 0;
+  color: #555;
+  display: flex;
+  align-items: center;
+  font-size: 16px; /* Adjust text size */
+}
+
+.weather-data .icon {
+  margin-right: 8px; /* Space between the icon and text */
+  font-size: 1rem; /* Adjust icon size to match text */
+}
