@@ -2,4 +2,4 @@
 
 Hello World! Welcome to my repository. (Posted using CLI!)
 
-Revature training Reposditory used for building C# foundation and .NET fundamentals.
+Revature training Repository used for building C# foundation and .NET fundamentals.
